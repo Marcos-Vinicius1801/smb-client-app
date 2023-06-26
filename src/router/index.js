@@ -1,15 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import CadastroView from '../views/CadastroView.vue'
+import ListViewAll from '../views/ListViewAll.vue'
+import ListView from '../views/ListView.vue'
+import CreateView from '../views/CreateView.vue'
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: CadastroView
+      path: '/create',
+      name: 'create',
+      component: CreateView
     },
+    {
+      path: '/user',
+      name: 'list-user',
+      component: ListView
+    },
+    {
+      path: '/users',
+      name: 'list-users',
+      component: ListViewAll
+    },
+
    ]
 })
 

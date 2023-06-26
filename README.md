@@ -1,16 +1,13 @@
-# smb-client
+# About this client server Single Page Application
 
-This template should help get you started developing with Vue 3 in Vite.
+Smb-client is a SPA client developed to consume **smb-server-app** Restful api. 
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# Instalation
 
-## Customize configuration
+$ git clone https://github.com/Marcos-Vinicius1801/smb-client-app.git
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+# Project Setup
 
 ```sh
 npm install
@@ -22,20 +19,11 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
+## ## Tecnologies used to create this client server
 
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+ 1. Vue.JS 3.3.4
+ 2. Vuetify 3.3.5
+ 3. Axios
+ 4. Eslint
+ 5. Prettier
+ 6. Vite

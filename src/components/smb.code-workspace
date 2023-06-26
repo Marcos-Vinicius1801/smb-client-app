@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../smb-client"
+		},
+		{
+			"path": "../../../smb-server-app"
+		}
+	],
+	"settings": {
+		"vue.codeActions.enabled": false
+	}
+}
