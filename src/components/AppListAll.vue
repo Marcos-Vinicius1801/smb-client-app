@@ -1,62 +1,69 @@
 <script setup>
-import {ref} from 'vue'
-import axios from 'axios'
-import AppDialog from './AppDialog.vue';
+	import {ref} from 'vue'
+	import axios from 'axios'
+	import AppDialog from './AppDialog.vue';
 
-const data = ref({
-  name: '',
-  email:'',
-  phone:'',
-  date_of_birth:'',
-})
+	const data = ref({
+		name: '',
+		email:'',
+		phone:'',
+		date_of_birth:'',
+	})
+  
+	let searchName = ref('')
 
-const response = await axios.get('http://localhost:8000/api/user/')
-const foundUser = response.data
-
+	async function getUserName(name){
+		const response = await axios.get(`http://localhost:8000/api/user/${name}`)
+		data.value = response.data
+		return (data.value)
+	} 
 </script>
 
 <template>
   <v-container class="container">
     <v-row justify="end">
-      <a href="#"> <v-btn variant="text" icon="mdi-account" path=""><AppDialog/></v-btn></a>
-      <a href="/user"> <v-btn variant="text" icon="mdi-account" path=""></v-btn></a>
-      <a href="/users"> <v-btn variant="text" icon="mdi-account-group" path=""></v-btn></a>  
-      <a href="/create"> <v-btn variant="text" icon="mdi-account-plus" path=""></v-btn></a>  
-  <component :is="currentView" />
-     
-   
+      <a href="#"> 
+        <v-btn variant="text" icon="mdi-account-plus"  color="#424242" path="">
+					<AppDialog/>
+				</v-btn>
+			</a>
     </v-row>
     <v-row>
- 
-    <v-col> 
- 
-  <v-table width="200">
-  <thead>
-    <tr>
-      <th class="">Nome</th>
-      <th class="">Email</th>
-      <th class="">Telefone</th>
-      <th class="">Data de nascimento</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="user in foundUser">
-      <td>{{user.name}}</td>
-      <td>{{user.email}}</td>
-      <td>{{user.phone_number}}</td>
-      <td>{{user.date_of_birth}}</td>
-   </tr>
-  </tbody>
-</v-table>
- </v-col>
-</v-row>
-  
-  
-</v-container>
-
+			<v-col> 
+				<v-card-title>
+				<v-text-field
+				label="Pesquisa" 
+				variant="outlined" 
+				
+				v-model="searchName"
+				append-inner-icon="mdi-magnify"
+				v-on="getUserName(searchName)">
+			</v-text-field>
+		</v-card-title>
+			<v-btn 
+					variant="text" 
+					color="#424242" 
+					path="">
+				</v-btn>
+		<v-table width="200" hover="true" items-per-page="10">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>Telefone</th>
+				<th>Data de nascimento</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr v-for="data in data">
+				<td>{{ data.name}}</td>
+				<td>{{ data.email}}</td>
+				<td>{{data.phone_number}}</td>
+				<td>{{data.date_of_birth}}</td>
+		</tr>
+		</tbody>
+	</v-table>
+			</v-col>
+		</v-row>
+	</v-container>
 </template>
-<style>
-
- 
- 
-</style>

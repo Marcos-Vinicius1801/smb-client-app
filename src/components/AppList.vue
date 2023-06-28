@@ -13,11 +13,8 @@ const data = ref({
 let searchName = ref('')
 
 async function getUserName(name){
-
-  console.log(name)
   const response = await axios.get(`http://localhost:8000/api/user/${name}`)
   data.value = response.data
-
 }
 
 
@@ -26,11 +23,15 @@ async function getUserName(name){
 <template>
   <v-container class="container">
     <v-row justify="end">
-  
-      <a href="/user"> <v-btn variant="text" icon="mdi-account" path=""></v-btn></a>
-      <a href="/users"> <v-btn variant="text" icon="mdi-account-group" path=""></v-btn></a>  
-      <a href="/create"> <v-btn variant="text" icon="mdi-account-plus" path=""></v-btn></a>  
-  <component :is="currentView" />
+       <a href="/">
+        <v-btn 
+            variant="text"  
+            icon="mdi-account-plus"  
+            color="#424242" 
+            path="">
+        </v-btn>
+      </a> 
+ 
     </v-row>
     
  
@@ -49,10 +50,10 @@ async function getUserName(name){
   <v-table width="200">
   <thead>
     <tr>
-      <th class="">Nome</th>
-      <th class="">Email</th>
-      <th class="">Telefone</th>
-      <th class="">Data de nascimento</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Data de nascimento</th>
     </tr>
   </thead>
   <tbody>
